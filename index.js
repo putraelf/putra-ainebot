@@ -31,9 +31,9 @@ const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const vcard = 'BEGIN:VCARD\n' 
             + 'VERSION:3.0\n' 
-            + 'FN:Admin Ainebot\n' 
-            + 'ORG: Pengembang AINEBOT;\n' 
-            + 'TEL;type=CELL;type=VOICE;waid=62895330379186:+62 895-3303-79186\n' 
+            + 'FN:Admin PUTRAELF\n' 
+            + 'ORG: Pengembang PUTRAELF;\n' 
+            + 'TEL;type=CELL;type=VOICE;waid=6281253534285:+62 812-5353-4285\n' 
             + 'END:VCARD' 
 prefix = '!'
 blocked = []          
@@ -46,10 +46,10 @@ const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
 const arrayBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
 const bulan = arrayBulan[moment().format('MM') - 1]
 const config = {
-    XBOT: '🤖AINEBOT🤖', 
-    instagram: 'https://instagram.com/anemio999', 
-    nomer: 'wa.me/62895330379186',
-    youtube: 'https://www.youtube.com/channel/UCCOUPwMDA19sekkYzkdmu6w', 
+    XBOT: '🤖PUTRAELF🤖', 
+    instagram: 'https://instagram.com/putraelf', 
+    nomer: 'wa.me/6281253534285',
+    youtube: 'https://https://www.youtube.com/channel/UCaKyCmfyYoPJGFHu5Ga34AA', 
     whatsapp: 'https://chat.whatsapp.com/EYGeuRbVFkfI8JrH3cNrGV', 
     tanggal: `TANGGAL: ${moment().format('DD')} ${bulan} ${moment().format('YYYY')}`,
     waktu: time
@@ -151,7 +151,7 @@ client.on('group-participants-update', async (anu) => {
 			const isCmd = body.startsWith(prefix)
 
 			mess = {
-				wait: '⏳ *WAIT* *Lagi proses!',
+				wait: '⏳ *WAIT* *Lagi proses!*',
 				success: '️ ✔  *Success* 🖤',
 				error: {
 					stick: 'Yah gagal ;(, coba ulangi ^_^',
@@ -170,6 +170,7 @@ client.on('group-participants-update', async (anu) => {
 			const ownerNumber = ["62895330379186@s.whatsapp.net"]
 			const pacarNumber = ["62895321438933@s.whatsapp.net"]
 			const birdhaNumber = ["6285156459328@s.whatsapp.net"]
+                        const putraNumber = ["6281253534285@s.whatsapp.net"]
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
@@ -186,6 +187,7 @@ client.on('group-participants-update', async (anu) => {
 			const isOwner = ownerNumber.includes(sender)
 			const isPacar = pacarNumber.includes(sender)
 			const isBirdha = birdhaNumber.includes(sender)
+                        const isPutra = putraNumber.includes(sender)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -279,7 +281,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'info':
 					me = client.user
 					uptime = process.uptime()
-					teks = `*INFO OWNER*\n*Owner bot* : Muhammad Ridwan Reynaldy\n*No Owner* : wa.me/62895330379186\n*Ig owner* : www.instagram.com/anemio999\n━━━━━━━━━━━━━━━━━━━━\n*INFO BOT*\n*Nama bot* : ${me.name}\n*Nomor bot* : @${me.jid.split('@')[0]}\n*Prefix* : ${prefix}\n*Total block contact* : ${blocked.length}\n*The bot is active on* : ${kyun(uptime)}\n*Fans page FB* : https://www.facebook.com/ainneboot\n*Ketik* : ${prefix}lpr _Untuk melaporkan admin bot melalui bot_\n*Ketik* : ${prefix}owner untuk menghubungi admin bot kami.`
+					teks = `*INFO OWNER*\n*Owner bot* : putra elf narnia\n*No Owner* : wa.me/6281253534285\n*Ig owner* : www.instagram.com/putraelf\n━━━━━━━━━━━━━━━━━━━━\n*INFO BOT*\n*Nama bot* : ${me.name}\n*Nomor bot* : @${me.jid.split('@')[0]}\n*Prefix* : ${prefix}\n*Total block contact* : ${blocked.length}\n*The bot is active on* : ${kyun(uptime)}\n*Fans page FB* : https://www.facebook.com/ainneboot\n*Ketik* : ${prefix}lpr _Untuk melaporkan admin bot melalui bot_\n*Ketik* : ${prefix}owner untuk menghubungi admin bot kami.`
 					buffer = await getBuffer(me.imgUrl)
 					client.sendMessage(from, buffer, image, {caption: teks, contextInfo:{mentionedJid: [me.jid]}})
 					break
@@ -414,6 +416,7 @@ client.on('group-participants-update', async (anu) => {
                      }
                     client.sendMessage('62895330379186@s.whatsapp.net', options, text, {quoted: mek})
                     client.sendMessage('6285156459328@s.whatsapp.net', options, text, {quoted: mek})
+                    client.sendMessage('6281253534285@s.whatsapp.net', options, text, {quoted: mek})
                     reply('REQUEST ANDA TELAH SAMPAI KE OWNER AINEBOT, Requests palsu atau main² tidak akan ditanggapi.')
                     break
                 case 'ssweb':
@@ -1350,6 +1353,7 @@ client.on('group-participants-update', async (anu) => {
 					break
 				case 'clearall':
 					if (!isOwner) return reply('Maaf fitur ini untuk owner kami!')
+                                        if (!isPutra) return reply('Maaf fitur ini untuk owner kami!')
 					anu = await client.chats.all()
 					client.setMaxListeners(25)
 					for (let _ of anu) {
@@ -1358,7 +1362,11 @@ client.on('group-participants-update', async (anu) => {
 					reply('𝗰𝗹𝗲𝗮𝗿 𝗮𝗹𝗹 𝘀𝘂𝗸𝘀𝗲𝘀 𝘆𝗮𝗵  :)')
 					break
                                case 'banned':
-                               case 'ban':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isPutra) return reply(mess.only.ownerB)
+					client.blockUser (`${body.slice(7)}@c.us`, "add")
+					client.sendMessage(from, `*Perintah Diterima, Memblockir* ${body.slice(7)}@c.us`, text)
+					break
                                case 'block':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isOwner) return reply(mess.only.ownerB)
@@ -1377,6 +1385,12 @@ client.on('group-participants-update', async (anu) => {
 					client.blockUser (`${body.slice(7)}@c.us`, "add")
 					client.sendMessage(from, `*Perintah Diterima, Memblockir* ${body.slice(7)}@c.us`, text)
 					break
+                               case 'unbanned':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isPutra) return reply(mess.only.ownerB)
+				    client.blockUser (`${body.slice(9)}@c.us`, "remove")
+					client.sendMessage(from, `*Perintah Diterima, Memmbuka Blockir* ${body.slice(9)}@c.us`, text)
+				break
                                case 'unblock':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isOwner) return reply(mess.only.ownerB)
@@ -1441,6 +1455,24 @@ client.on('group-participants-update', async (anu) => {
 					break
 				case 'bc2': 
 					if (!isBirdha) return reply('Maaf fitur ini untuk owner kami!') 
+					if (args.length < 1) return reply('.......')
+					anu = await client.chats.all()
+					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						buff = await client.downloadMediaMessage(encmedia)
+						for (let _ of anu) {
+							client.sendMessage(_.jid, buff, image, {caption: `❮ 𝙋𝙀𝙎𝘼𝙉 𝘽𝙍𝙊𝘼𝘿𝘾𝘼𝙎𝙏 ❯\n\n${body.slice(4)}`})
+						}
+						reply('𝙨𝙪𝙘𝙘𝙚𝙨𝙨 𝙗𝙧𝙤𝙖𝙙𝙘𝙖𝙨𝙩 ')
+					} else {
+						for (let _ of anu) {
+							sendMess(_.jid, `❮ 𝙋𝙀𝙎𝘼𝙉 𝘽𝙍𝙊𝘼𝘿𝘾𝘼𝙎𝙏 ❯\n\n${body.slice(4)}`)
+						}
+						reply('𝙨𝙪𝙘𝙘𝙚𝙨𝙨 𝙗𝙧𝙤𝙖𝙙𝙘𝙖𝙨𝙩 ')
+					}
+					break
+                                case 'bc3': 
+					if (!isPutra) return reply('Maaf fitur ini untuk owner kami!') 
 					if (args.length < 1) return reply('.......')
 					anu = await client.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
