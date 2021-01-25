@@ -1,6 +1,10 @@
 
 const help = (prefix) => { 
 	return `                 
+「 *PUTRABOT* 」
+◪ *INFO*
+  ❏ Prefix: 「  ${prefix}  」
+  ❏ Creator: *PUTRAELF*
 ┏━━❉ *About Bot* ❉━━┓
 ┣⊱ *${prefix}owner*
 ┣⊱ *${prefix}donasi*
