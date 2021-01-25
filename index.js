@@ -167,7 +167,7 @@ client.on('group-participants-update', async (anu) => {
 			}
 
 			const botNumber = client.user.jid
-			const ownerNumber = ["62895330379186@s.whatsapp.net"]
+			const ownerNumber = ["6281253534285@s.whatsapp.net"]
 			const pacarNumber = ["62895321438933@s.whatsapp.net"]
 			const birdhaNumber = ["6285156459328@s.whatsapp.net"]
                         const putraNumber = ["6281253534285@s.whatsapp.net"]
@@ -401,7 +401,7 @@ client.on('group-participants-update', async (anu) => {
                          text: teks1,
                          contextInfo: {mentionedJid: [nomor]},
                      }
-                    client.sendMessage('62895330379186@s.whatsapp.net', options, text, {quoted: mek})
+                    client.sendMessage('6281253534285@s.whatsapp.net', options, text, {quoted: mek})
                     reply('Masalah telah di laporkan ke owner AINEBOT, Laporan palsu atau main² tidak akan ditanggapi.')
                     break
                 case 'request':
@@ -414,10 +414,10 @@ client.on('group-participants-update', async (anu) => {
                          text: ress,
                          contextInfo: {mentionedJid: [nomor]},
                      }
-                    client.sendMessage('62895330379186@s.whatsapp.net', options, text, {quoted: mek})
+                    client.sendMessage('6281253534285@s.whatsapp.net', options, text, {quoted: mek})
                     client.sendMessage('6285156459328@s.whatsapp.net', options, text, {quoted: mek})
                     client.sendMessage('6281253534285@s.whatsapp.net', options, text, {quoted: mek})
-                    reply('REQUEST ANDA TELAH SAMPAI KE OWNER AINEBOT, Requests palsu atau main² tidak akan ditanggapi.')
+                    reply('REQUEST ANDA TELAH SAMPAI KE OWNER PUTRABOT, Requests palsu atau main² tidak akan ditanggapi.')
                     break
                 case 'ssweb':
 					if (args.length < 1) return reply('Urlnya mana kak?')
@@ -475,16 +475,15 @@ client.on('group-participants-update', async (anu) => {
                                         await client.sendMessage(from, value, MessageType.text)
                                         break
 
-				case 'nulis':
-				case 'tulis':
-					if (args.length < 1) return reply('Aku di suruh nulis apa kak? Setan kah!')
-					teks = body.slice(7)
-					reply(mess.wait)
-					anu = await fetchJson(`https://st4rz.herokuapp.com/api/nulis?text=${teks}&apiKey=${apiKey}`, {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					buff = await getBuffer(anu.result)
-					client.sendMessage(from, buff, image, {quoted: mek, caption: mess.success})
-					break
+			case 'nulis':
+				if (!isRegistered) return reply(ind.noregis())
+                                if (args.length < 1) return reply(ind.wrongf())
+				aruga = body.slice(7)
+				reply(ind.wait())
+				aruga = await getBuffer(`https://api.zeks.xyz/api/nulis?text=${aruga}&apikey=apivinz`)
+				client.sendMessage(from, aruga, image, {caption: 'Nih kak udah jadi..', quoted: mek})
+				await limitAdd(sender)
+				break
                                 case 'bucin':
 			 		gatauda = body.slice(7)
 					anu = await fetchJson(`https://arugaz.herokuapp.com/api/howbucins`, {method: 'get'})
@@ -1067,7 +1066,7 @@ client.on('group-participants-update', async (anu) => {
 					tels = body.slice(7)				
 					reply(mess.wait)
 					buffer = await getBuffer(anu.thumb)
-					anu = await fetchJson(`https://alfians-api.herokuapp.com/api/ytv?url=${tels}`, {method: 'get'})
+					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${tels}`, {method: 'get'})
 					hasil = `*Judul ➼* ${anu.title}\n*Filesize ➼* ${anu.filesize}\n*resolution ➼* ${anu.resolution}\n*Tipe ➼* ${anu.ext}\n*Link ➼* ${anu.result}`					
 					client.sendMessage(from, buffer, image,  {quoted: mek, caption: hasil})
 					break
@@ -1075,7 +1074,7 @@ client.on('group-participants-update', async (anu) => {
 				if (args.length < 1) return reply('link YouTube nya mana?')
 					tels = body.slice(7)				
 					reply(mess.wait)
-					anu = await fetchJson(`https://alfians-api.herokuapp.com/api/yta?url=${tels}`, {method: 'get'})
+					anu = await fetchJson(`https://arugaz.my.id/api/media/ytmus?url=${tels}`, {method: 'get'})
 					buffer = await getBuffer(anu.thumb)
 					hasil = `*Judul ➼* ${anu.title}\n*Filesize ➼* ${anu.filesize}\n*Tipe ➼* ${anu.ext}\n*Link ➼* ${anu.result}`					
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: hasil})
@@ -1324,7 +1323,7 @@ client.on('group-participants-update', async (anu) => {
                                 case 'linkgrup':
                                 case 'linkgroup':
                                         if (!isGroup) return reply(mess.only.group)
-					if (!isOwner) return reply(mess.only.ownerB)
+					if (!isPutra) return reply(mess.only.ownerB)
                                         if (!isGroupAdmins) return reply(mess.only.admin)
                                         if (!isBotGroupAdmins) return reply(mess.only.Badmin)
                                         linkgc = await client.groupInviteCode(from)
@@ -1332,7 +1331,7 @@ client.on('group-participants-update', async (anu) => {
                                         break
 				case 'tagall':
 					if (!isGroup) return reply(mess.only.group)
-					if (!isOwner) return reply(mess.only.ownerB)
+					if (!isPutra) return reply(mess.only.ownerB)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					members_id = []
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
@@ -1533,7 +1532,7 @@ client.on('group-participants-update', async (anu) => {
             case 'owner':
             case 'creator':
                   client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
-                  client.sendMessage(from, 'Link Owner : wa.me/62895330379186',MessageType.text, { quoted: mek} )
+                  client.sendMessage(from, 'Link Owner : wa.me/6281253534285',MessageType.text, { quoted: mek} )
                   client.sendMessage(from, 'Tuh nomer owner ku >_<, jangan spam atau ku block kamu',MessageType.text, { quoted: mek} )
                   break
             case 'assalamualaikum':
