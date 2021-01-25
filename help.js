@@ -132,8 +132,19 @@ const help = (prefix) => {
 ┣⊱ *${prefix}setpp*
 ┣⊱ *${prefix}setprefix*
 ┣━━━━━━━━━━━━━━
-┃*POWERED BY AINEBOT*
+┃*POWERED BY PUTRABOT*
 ┗━━━━━━━━━━━━━━
+╔══✪〘 DONATE 〙✪══
+║
+╠➥ *DONASI BISA*:081253534285
+╠➥ *DANA/PULSA/*:081253534285
+╠➥ *PAYPAL*:081253534285
+╠➥ *SAWERIA :*
+╠➥ *TERIMA KASIH *
+║
+╚═〘 *PUTRABOT* 〙
+╠═══════════════════════════
+━━━━━━━━━━━━━━━
 `
 }
 exports.help = help
