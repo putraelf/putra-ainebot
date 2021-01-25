@@ -131,9 +131,6 @@ const help = (prefix) => {
 ┣⊱ *${prefix}leave*
 ┣⊱ *${prefix}setpp*
 ┣⊱ *${prefix}setprefix*
-┣━━━━━━━━━━━━━━
-┃*POWERED BY PUTRABOT*
-┗━━━━━━━━━━━━━━
 ╔══✪〘 DONATE 〙✪══
 ║
 ╠➥ *DONASI BISA*:081253534285
@@ -145,6 +142,7 @@ const help = (prefix) => {
 ╚═〘 *PUTRABOT* 〙
 ╠═══════════════════════════
 ━━━━━━━━━━━━━━━
+
 `
 }
 exports.help = help
