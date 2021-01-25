@@ -476,15 +476,13 @@ client.on('group-participants-update', async (anu) => {
                                         break
 
 			case 'nulis':
-				if (!isRegistered) return reply(ind.noregis())
                                 if (args.length < 1) return reply(ind.wrongf())
 				aruga = body.slice(7)
 				reply(ind.wait())
 				aruga = await getBuffer(`https://api.zeks.xyz/api/nulis?text=${aruga}&apikey=apivinz`)
 				client.sendMessage(from, aruga, image, {caption: 'Nih kak udah jadi..', quoted: mek})
-				await limitAdd(sender)
 				break
-                                case 'bucin':
+				case 'bucin':
 			 		gatauda = body.slice(7)
 					anu = await fetchJson(`https://arugaz.herokuapp.com/api/howbucins`, {method: 'get'})
 					reply(anu.desc)
@@ -1062,23 +1060,28 @@ client.on('group-participants-update', async (anu) => {
                    client.sendMessage(from, hasil, text, {quoted: mek,})
                    break
 		case 'ytmp4':
-				if (args.length < 1) return reply('link YouTube nya mana?')
-					tels = body.slice(7)				
-					reply(mess.wait)
-					buffer = await getBuffer(anu.thumb)
-					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${tels}`, {method: 'get'})
-					hasil = `*Judul ➼* ${anu.title}\n*Filesize ➼* ${anu.filesize}\n*resolution ➼* ${anu.resolution}\n*Tipe ➼* ${anu.ext}\n*Link ➼* ${anu.result}`					
-					client.sendMessage(from, buffer, image,  {quoted: mek, caption: hasil})
+				        if (args.length < 1) return reply('Urlnya mana kak?')
+					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
+					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${args[0]}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					teks = `❏ *Title* : ${anu.title}\n\n❏ *Tunggu Bentar Ya Kak, Vidoenya Lagi Di Kirim...*`
+					thumb = await getBuffer(anu.thumb)
+					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
+					buffer = await getBuffer(anu.result)
+					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, quoted: mek})
 					break
-                case 'ytmp3':
-				if (args.length < 1) return reply('link YouTube nya mana?')
-					tels = body.slice(7)				
-					reply(mess.wait)
-					anu = await fetchJson(`https://arugaz.my.id/api/media/ytmus?url=${tels}`, {method: 'get'})
-					buffer = await getBuffer(anu.thumb)
-					hasil = `*Judul ➼* ${anu.title}\n*Filesize ➼* ${anu.filesize}\n*Tipe ➼* ${anu.ext}\n*Link ➼* ${anu.result}`					
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: hasil})
-					break
+		 case 'ytmp3':
+	                                if (args.length < 1) return reply('Urlnya mana kak?')
+					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
+					anu = await fetchJson(`https://arugaz.my.id/api/media/ytmus?url=${args[0]}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					teks = `❏ *Title* : ${anu.titleInfo}\n\n❏ *Tunggu Bentar Ya Kak, Audionya Lagi Di Kirim...*`
+					thumb = await getBuffer(anu.getImages)
+					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
+					buffer = await getBuffer(anu.getAudio)
+					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.titleInfo}.mp3`, quoted: mek})
+					await limitAdd(sender)
+					break    
                 case 'bplogo':
               	               if (args.length < 1) return reply('teksnya mana kak?')
                                         teks = `${body.slice(8)}`
