@@ -1614,7 +1614,7 @@ client.on('group-participants-update', async (anu) => {
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (!isOwner) return reply(mess.only.ownerB)
+					if (!isOwner) return reply(mess.only.PutraNumber)
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('*Tag target yang ingin di tendang!*')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
@@ -1632,7 +1632,7 @@ client.on('group-participants-update', async (anu) => {
 					break
 				case 'listadmin':
 					if (!isGroup) return reply(mess.only.group)
-					if (!isOwner) return reply(mess.only.ownerB)
+					if (!isOwner) return reply(mess.only.PutraNumber)
 					teks = `List admin of group *${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
 					no = 0
 					for (let admon of groupAdmins) {
@@ -1666,7 +1666,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'simih':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isOwner) return reply(mess.only.ownerB)
+					if (!isOwner) return reply(mess.only.PutraNumber)
 					if (args.length < 1) return reply('Aktifkan dulu iya kak!')
 					if (Number(args[0]) === 1) {
 						if (isSimi) return reply('*SUDAH AKTIF !!!*')
@@ -1684,7 +1684,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'nsfw':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isOwner) return reply(mess.only.ownerB)
+					if (!isOwner) return reply(mess.only.PutraNumber)
 					if (args.length < 1) return reply('Aktifkan dulu iya kak!')
 					if (Number(args[0]) === 1) {
 						if (isNsfw) return reply('*SUDAH AKTIF !!!*')
@@ -1702,7 +1702,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'welcome':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isOwner) return reply(mess.only.ownerB)
+					if (!isOwner) return reply(mess.only.PutraNumber)
 					if (args.length < 1) return reply('Aktifkan dulu iya kak!')
 					if (Number(args[0]) === 1) {
 						if (isWelkom) return reply('*SUDAH AKTIF !!!*')
@@ -1718,7 +1718,7 @@ client.on('group-participants-update', async (anu) => {
 					}
 				case 'clone':
 					if (!isGroup) return reply(mess.only.group)
-					if (!isOwner) return reply(mess.only.ownerB)
+					if (!isOwner) return reply(mess.only.PutraNumber)
 					if (args.length < 1) return reply(' *TAG YANG MAU DI CLONE!!!* ')
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Sudah berhasil!')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid[0]
