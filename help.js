@@ -2,10 +2,10 @@
 const help = (prefix) => { 
 	return `                 
 ⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️
-「 *PUTRABOT* 」
-◪ *INFO*
-  ❏ Prefix: 「  ${prefix}  」
-  ❏ Creator: *PUTRAELF*
+    「 *PUTRABOT* 」
+◪   *INFO*
+  ❏ Prefix:  「  ${prefix}  」
+  ❏ Creator:  *PUTRAELF*
 ⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️
 ┏━━❉ *About Bot* ❉━━┓
 ┣⊱ *${prefix}owner*
@@ -137,7 +137,7 @@ const help = (prefix) => {
 ┣⊱ *${prefix}leave*
 ┣⊱ *${prefix}setpp*
 ┣⊱ *${prefix}setprefix*
-╔══✪〘 DONATE 〙✪══
+╔══✪〘 DONATE 〙✪════════════
 ║
 ╠➥ *DONASI BISA*:081253534285
 ╠➥ *DANA/PULSA/*:081253534285
@@ -146,7 +146,7 @@ const help = (prefix) => {
 ╠➥ *TERIMA KASIH *
 ║
 ╚═〘 *PUTRABOT* 〙
-╠═══════════════════════════
+╠═════════════════════════════
 ━━━━━━━━━━━━━━━
 
 `
