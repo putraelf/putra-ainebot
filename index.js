@@ -106,7 +106,15 @@ client.on('group-participants-update', async (anu) => {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `*Hallo* 👋 @${num.split('@')[0]}\nSelamat datang di group *${mdata.subject}*\nSemoga betah ya di sini 😅\nJangan lupa intro @${num.split('@')[0]} 😅`
+				teks = `*Hallo* 👋 @${num.split('@')[0]}\nSelamat datang di group *${mdata.subject}*\nSemoga betah ya di sini 😅\nJangan lupa intro╭══════•›⸙ ━✪━ ⸙‹•═══════
+│ 𒈞ℕ𝔼𝕎 𝕄𝔼𝕄𝔹𝔼ℝ 𝕀ℕ𝕋ℝ𝕆𒈞
+ ¦  by *OWNERBOT* :ไفتر علف ๅื
+     Wa.me//6281253534285 •°•°•°•°•°•°•°•°•°•°•°•°•°•°•°•°•°•°•
+│ Nama  :  
+│ Umur   :  
+ ¦  Status : 
+ |  Askot  : 
+╰═══════⸙ ━✪━ ⸙    ════════ @${num.split('@')[0]} 😅`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			} else if (anu.action == 'remove') {
@@ -1062,8 +1070,8 @@ client.on('group-participants-update', async (anu) => {
 		case 'ytmp4':
 				        if (args.length < 1) return reply('Urlnya mana kak?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
-					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${args[0]}`, {method: 'get'})
-					if (anu.error) return reply(anu.error)
+					anu = await fetchJson(`https://api.zeks.xyz/api/ytmp4?url=${args[0]}&apikey=apivinz`, {method: 'get'})
+                                        if (anu.error) return reply(anu.error)
 					teks = `❏ *Title* : ${anu.title}\n\n❏ *Tunggu Bentar Ya Kak, Vidoenya Lagi Di Kirim...*`
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
@@ -1107,7 +1115,7 @@ client.on('group-participants-update', async (anu) => {
               	               if (args.length < 1) return reply('teksnya mana kak?')
                                         teks = `${body.slice(10)}`
                                         if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 5 kalimat', text, {quoted: mek})
-                                        buff = await getBuffer(`https://arugaz.my.id/api/textpro/bloodtext?text=${teks}`, {method: 'get'})
+				        aruga = await getBuffer(`https://arugaz.my.id/api/textpro/bloodtext?text=${aruga}`)
                                         client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
 			     	        break
                 case 'cloudsky':
@@ -1326,8 +1334,7 @@ client.on('group-participants-update', async (anu) => {
                                 case 'linkgrup':
                                 case 'linkgroup':
                                         if (!isGroup) return reply(mess.only.group)
-					if (!isPutra) return reply(mess.only.ownerB)
-                                        if (!isGroupAdmins) return reply(mess.only.admin)
+				        if (!isGroupAdmins) return reply(mess.only.admin)
                                         if (!isBotGroupAdmins) return reply(mess.only.Badmin)
                                         linkgc = await client.groupInviteCode(from)
                                         reply('https://chat.whatsapp.com/'+linkgc)
@@ -1617,7 +1624,6 @@ client.on('group-participants-update', async (anu) => {
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (!isOwner) return reply(mess.only.PutraNumber)
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('*Tag target yang ingin di tendang!*')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
@@ -1635,6 +1641,7 @@ client.on('group-participants-update', async (anu) => {
 					break
 				case 'listadmin':
 					if (!isGroup) return reply(mess.only.group)
+                                        if (!isGroupAdmins) return reply(ind.admin())
 					if (!isOwner) return reply(mess.only.PutraNumber)
 					teks = `List admin of group *${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
 					no = 0
