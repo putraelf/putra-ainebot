@@ -22,6 +22,7 @@ const help = (prefix) => {
 ┣━━❀ *Maker Logo* ❀━━
 ┣⊱ *${prefix}phlogo*
 ┣⊱ *${prefix}text3d*
+┣⊱ *${prefix}brainly*
 ┣⊱ *${prefix}glitch* ❌
 ┣⊱ *${prefix}wolflogo* ❌
 ┣━━❀ *Random Picture Meme* ❀━━
