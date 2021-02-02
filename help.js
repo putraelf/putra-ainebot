@@ -1,12 +1,28 @@
 
-const help = (prefix) => { 
-	return `                 
-⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️
-    「 *PUTRABOT* 」
-◪   *INFO*
-  ❏ Prefix:  「  ${prefix}  」
-  ❏ Creator:  *PUTRAELF*
-⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️⛓️
+const fs = require('fs-extra')
+const { 
+    prefix
+} = JSON.parse(fs.readFileSync('./settings/setting.json'))
+
+/*
+Dimohon untuk tidak menghapus link github saya, butuh support dari kalian! makasih.
+*/
+
+exports.textTnC = () => {
+    return `
+Source code / bot ini merupakan program open-source (gratis) yang ditulis menggunakan Javascript, kamu dapat menggunakan, menyalin, memodifikasi, menggabungkan, menerbitkan, mendistribusikan, mensublisensikan, dan atau menjual salinan dengan tanpa menghapus author utama dari source code / bot ini.
+`
+}
+
+/*
+Dimohon untuk tidak menghapus link github saya, butuh support dari kalian! makasih.
+*/
+
+exports.textMenu = (pushname) => {
+    return `
+_Hi/Halo/Hai, *${pushname}!*_
+Berikut adalah beberapa fitur yang ada pada bot ini!✨\n Semoga dengan adanya *PutraBot* ini kalian semua bisa terbantu.\n_Kebahagiaan orang lain lebih berharga dari pada kebahagiaan diri sendiri._
+*<<<=======================>>>*   	
 ┏━━❉ *About Bot* ❉━━┓
 ┣⊱ *${prefix}owner*
 ┣⊱ *${prefix}donasi*
@@ -14,21 +30,30 @@ const help = (prefix) => {
 ┣⊱ *${prefix}botstat*
 ┣⊱ *${prefix}lpr*
 ┣⊱ *${prefix}request*
+═══════════════════════
 ┣━━❀ *Maker* ❀━━
 ┣⊱ *${prefix}ocr*
 ┣⊱ *${prefix}sticker*
 ┣⊱ *${prefix}gtts*
 ┣⊱ *${prefix}toimg*
+═══════════════════════
 ┣━━❀ *Maker Logo* ❀━━
 ┣⊱ *${prefix}phlogo*
 ┣⊱ *${prefix}text3d*
 ┣⊱ *${prefix}brainly*
+┣⊱ *${prefix}slap*
+┣⊱ *${prefix}mtk*
+┣⊱ *${prefix}beritahoax*
 ┣⊱ *${prefix}glitch* ❌
 ┣⊱ *${prefix}wolflogo* ❌
+═══════════════════════════
 ┣━━❀ *Random Picture Meme* ❀━━
+════════════════════════════
 ┣⊱ *${prefix}meme*
 ┣⊱ *${prefix}memeindo*
-┣━━❀ *Random Picture Anime* ❀━━
+┣━━❀*Random Picture Anime*❀━━
+══════════════════════════
+┣⊱ *${prefix}anime*
 ┣⊱ *${prefix}waifu*
 ┣⊱ *${prefix}neko*
 ┣⊱ *${prefix}loli*
@@ -117,6 +142,7 @@ const help = (prefix) => {
 ┣⊱ *${prefix}ssweb*
 ┣⊱ *${prefix}indohot*
 ┣━━❀ *Group* ❀━━
+═════════════════════════════════
 ┣⊱ *${prefix}linkgc*
 ┣⊱ *${prefix}tagall*
 ┣⊱ *${prefix}add* [+62xx]
@@ -129,6 +155,7 @@ const help = (prefix) => {
 ┣⊱ *${prefix}nsfw* [1/0] 
 ┣⊱ *${prefix}welcome* [1/0]
 ┣━━❀ *Owner bot* ❀━
+═════════════════════════════════
 ┣⊱ *${prefix}clearall*
 ┣⊱ *${prefix}blocklist*
 ┣⊱ *${prefix}block*
@@ -148,8 +175,6 @@ const help = (prefix) => {
 ║
 ╚═〘 *PUTRABOT* 〙
 ╠═════════════════════════════
-━━━━━━━━━━━━━━━
-
 `
 }
 exports.help = help
