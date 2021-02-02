@@ -24,6 +24,7 @@ const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const tiktod = require('tiktok-scraper')
+const brainly = require('brainly-scraper'
 const ffmpeg = require('fluent-ffmpeg')
 const { removeBackgroundFromImageFile } = require('remove.bg')
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
@@ -114,7 +115,7 @@ client.on('group-participants-update', async (anu) => {
  │ Umur   :  
  ¦  Status : 
  |  Askot  : 
-╰═══════⸙ ━✪━ ⸙════════ @${num.split('@')[0]} 😅`
+ ╰═══════⸙ ━✪━ ⸙════════ @${num.split('@')[0]} 😅`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			} else if (anu.action == 'remove') {
