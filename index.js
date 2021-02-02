@@ -1068,8 +1068,7 @@ client.on('group-participants-update', async (anu) => {
                    client.sendMessage(from, hasil, text, {quoted: mek,})
                    break
 		case 'ytmp4':
-				reply(ind.wait())
-				if (args.length < 1) return reply('Urlnya mana kak?')
+	                        if (args.length < 1) return reply('Urlnya mana kak?')
 				if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
 				anu = await fetchJson(`https://api.zeks.xyz/api/ytmp4?url=${args[0]}&apikey=apivinz`, {method: 'get'})
 				if (anu.error) return reply(anu.error)
@@ -1081,8 +1080,7 @@ client.on('group-participants-update', async (anu) => {
 		                break
 			
                case 'ytmp3':
-	                        reply(ind.wait())
-				if (args.length < 1) return reply('Urlnya mana kak?')
+	                        if (args.length < 1) return reply('Urlnya mana kak?')
 				if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
 				anu = await fetchJson(`https://api.zeks.xyz/api/ytmp3?url=${args[0]}&apikey=apivinz`, {method: 'get'})
 				if (anu.error) return reply(anu.error)
@@ -1092,9 +1090,8 @@ client.on('group-participants-update', async (anu) => {
 				buffer = await getBuffer(anu.result.url_audio)
 				client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.result.title}.mp3`, quoted: mek})
 				break
-               case 'mtkme':
-	                        reply(ind.wait())
-                                if (isBanned) return reply(mess.only.benned)    
+               case 'mtk':
+	                        if (isBanned) return reply(mess.only.benned)    
 				if (!isUser) return reply(mess.only.userB)
 				if (args.length < 1) return reply(`[ !] Kirim perintah *${prefix}kalkulator [ Angka ]*\nContoh : ${prefix}kalkulator 12*12\n*NOTE* :\n- Untuk Perkalian Menggunakan *\n- Untuk Pertambahan Menggunakan +\n- Untuk Pengurangan Mennggunakan -\n- Untuk Pembagian Menggunakan /`)
 				const Math_js = require('mathjs')
@@ -1163,19 +1160,18 @@ client.on('group-participants-update', async (anu) => {
 						teks += `\n*「 _BRAINLY_ 」*\n\n*➸ Pertanyaan:* ${Y.pertanyaan}\n\n*➸ Jawaban:* ${Y.jawaban[0].text}\n❉───────────❉\n`
 					}
 					client.sendMessage(from, teks, text, {quoted: mek, detectLinks: false})
+					console.log(res)
 					})
-                                        break
+					break 
               case 'slap':
 					kapankah = body.slice(1)
-					if (isLimit(sender)) return reply(ind.limitend(pusname))
-					const slap =['anjing','babi lu','anak anjing','udah tolol nub Lagi','muka lo kek monyet','udah jomblo sendirian lagi dirumah tolol','so so an mau punya pacar muka aja kek monyet lepass dari kandang','ganteng doang di toxic aja dibilang baperan','pantek kau','bangsat kau','ku entod kalian nangis kau','anjing lu semua','lihat anak anjing lagi baca','ganteng doang jemput cewe dipanggang','kamu cantik beb bullshit anjing cowo buaya','anak setan','puki lu','anjing ngajak gelud','sama hantu takut cupu bangsat','cupu cupu aja gausah bacot','bangsat lu semua','bocah lu semua bangsat','3 Hari Lagi']
+				        const slap =['anjing','babi lu','anak anjing','udah tolol nub Lagi','muka lo kek monyet','udah jomblo sendirian lagi dirumah tolol','so so an mau punya pacar muka aja kek monyet lepass dari kandang','ganteng doang di toxic aja dibilang baperan','pantek kau','bangsat kau','ku entod kalian nangis kau','anjing lu semua','lihat anak anjing lagi baca','ganteng doang jemput cewe dipanggang','kamu cantik beb bullshit anjing cowo buaya','anak setan','puki lu','anjing ngajak gelud','sama hantu takut cupu bangsat','cupu cupu aja gausah bacot','bangsat lu semua','bocah lu semua bangsat','3 Hari Lagi']
 					const ple = slap[Math.floor(Math.random() * slap.length)]
 					pod = await getBuffer(`https://media.giphy.com/media/S8507sBJm1598XnsgD/source.gif`)
 					client.sendMessage(from, pod, image, { quoted: mek, caption: '*Toxic*\n\n'+ ple })
 					await
                                         break
 		case 'tampar':
-					
 					ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					buffer = await getBuffer('https://media.giphy.com/media/S8507sBJm1598XnsgD/source.gif', {method: 'get'})
