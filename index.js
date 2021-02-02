@@ -1091,7 +1091,8 @@ client.on('group-participants-update', async (anu) => {
 				buffer = await getBuffer(anu.result.url_audio)
 				client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.result.title}.mp3`, quoted: mek})
 				break
-               case 'mtk':
+                    case 'mtk':
+case 'math':
 	                        if (isBanned) return reply(mess.only.benned)    
 				if (!isUser) return reply(mess.only.userB)
 				if (args.length < 1) return reply(`[ !] Kirim perintah *${prefix}kalkulator [ Angka ]*\nContoh : ${prefix}kalkulator 12*12\n*NOTE* :\n- Untuk Perkalian Menggunakan *\n- Untuk Pertambahan Menggunakan +\n- Untuk Pengurangan Mennggunakan -\n- Untuk Pembagian Menggunakan /`)
@@ -1177,11 +1178,11 @@ client.on('group-participants-update', async (anu) => {
 					rano = getRandom('.webp')
 					buffer = await getBuffer('https://media.giphy.com/media/S8507sBJm1598XnsgD/source.gif', {method: 'get'})
 					exec(`wget ${buffer.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(ranp)
-						if (err) return reply(ind.stikga())
-						buffer = fs.readFileSync(rano)
-						client.sendMessage(from, buffer, sticker, {quoted: mek})
-						fs.unlinkSync(rano)
+					fs.unlinkSync(ranp)
+					if (err) return reply(ind.stikga())
+					buffer = fs.readFileSync(rano)
+					client.sendMessage(from, buffer, sticker, {quoted: mek})
+					fs.unlinkSync(rano)
 					})
 					break
                 case 'beritahoax':
