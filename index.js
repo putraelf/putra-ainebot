@@ -1105,16 +1105,7 @@ client.on('group-participants-update', async (anu) => {
 			        reply(`* MATH *\n\n*Kalkulator*\n${mtk} = ${Math_js.evaluate(mtk)}`)
 			        }
 			        break
-
-
-                                
-					
-					
-				
-					
-				
-                                     
-                case 'bplogo':
+             case 'bplogo':
               	               if (args.length < 1) return reply('teksnya mana kak?')
                                         teks = `${body.slice(8)}`
                                         if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 5 kalimat', text, {quoted: mek})
@@ -1137,11 +1128,11 @@ client.on('group-participants-update', async (anu) => {
 			     	        break
                 case 'blood':
               	               if (args.length < 1) return reply(ind.wrongf())
-				aruga = body.slice(7)
-				reply(ind.wait())
-				aruga = await getBuffer(`https://arugaz.my.id/api/textpro/bloodtext?text=${aruga}`)
-				client.sendMessage(from, aruga, image, {caption: 'Nih kak', quoted: mek})
-				break
+				      aruga = body.slice(7)
+				      reply(ind.wait())
+				      aruga = await getBuffer(`https://arugaz.my.id/api/textpro/bloodtext?text=${aruga}`)
+				      client.sendMessage(from, aruga, image, {caption: 'Nih kak', quoted: mek})
+				      break
 			     	       
                 case 'cloudsky':
               	               if (args.length < 1) return reply('teksnya mana kak?')
