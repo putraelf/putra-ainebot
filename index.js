@@ -1068,27 +1068,52 @@ client.on('group-participants-update', async (anu) => {
                    client.sendMessage(from, hasil, text, {quoted: mek,})
                    break
 		case 'ytmp4':
-				        if (args.length < 1) return reply('Urlnya mana kak?')
-					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
-					anu = await fetchJson(`https://api.zeks.xyz/api/ytmp4?url=${args[0]}&apikey=apivinz`, {method: 'get'})
-                                        if (anu.error) return reply(anu.error)
-					teks = `❏ *Title* : ${anu.title}\n\n❏ *Tunggu Bentar Ya Kak, Vidoenya Lagi Di Kirim...*`
-					thumb = await getBuffer(anu.thumb)
-					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
-					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, quoted: mek})
-					break
-		 case 'ytmp3':
-	                                if (args.length < 1) return reply('Urlnya mana kak?')
-					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
-					anu = await fetchJson(`https://arugaz.my.id/api/media/ytmus?url=${args[0]}`, {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					teks = `❏ *Title* : ${anu.titleInfo}\n\n❏ *Tunggu Bentar Ya Kak, Audionya Lagi Di Kirim...*`
-					thumb = await getBuffer(anu.getImages)
-					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
-					buffer = await getBuffer(anu.getAudio)
-					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.titleInfo}.mp3`, quoted: mek})
-                                        break    
+				reply(ind.wait())
+				if (args.length < 1) return reply('Urlnya mana kak?')
+				if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
+				anu = await fetchJson(`https://api.zeks.xyz/api/ytmp4?url=${args[0]}&apikey=apivinz`, {method: 'get'})
+				if (anu.error) return reply(anu.error)
+				teks = `❏ *Title* : ${anu.result.title}\n❏ *Ukuran* : ${anu.result.size}\n\n❏ *Tunggu Bentar Ya Kak, Vidoenya Lagi Di Kirim...*`
+				thumb = await getBuffer(anu.result.thumbnail)
+				client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
+				buffer = await getBuffer(anu.result.url_video)
+				client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.result.title}.mp4`, quoted: mek})
+		                break
+			
+               case 'ytmp3':
+	                        reply(ind.wait())
+				if (args.length < 1) return reply('Urlnya mana kak?')
+				if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
+				anu = await fetchJson(`https://api.zeks.xyz/api/ytmp3?url=${args[0]}&apikey=apivinz`, {method: 'get'})
+				if (anu.error) return reply(anu.error)
+				teks = `❏ *Title* : ${anu.result.title}\n❏ *Ukuran* : ${anu.result.size}\n\n❏ *Tunggu Bentar Ya Kak, Audionya Lagi Di Kirim...*`
+				thumb = await getBuffer(anu.result.thumbnail)
+				client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
+				buffer = await getBuffer(anu.result.url_audio)
+				client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.result.title}.mp3`, quoted: mek})
+				break
+               case 'mtkme':
+	                        reply(ind.wait())
+                                if (isBanned) return reply(mess.only.benned)    
+				if (!isUser) return reply(mess.only.userB)
+				if (args.length < 1) return reply(`[ !] Kirim perintah *${prefix}kalkulator [ Angka ]*\nContoh : ${prefix}kalkulator 12*12\n*NOTE* :\n- Untuk Perkalian Menggunakan *\n- Untuk Pertambahan Menggunakan +\n- Untuk Pengurangan Mennggunakan -\n- Untuk Pembagian Menggunakan /`)
+				const Math_js = require('mathjs')
+				mtk = body.slice(6)
+				if (typeof Math_js.evaluate(mtk) !== "number") {
+			        reply(`"${mtk}", bukan angka!\n[] Kirim perintah *${prefix}kalkulator [ Angka ]*\nContoh : ${prefix}kalkulator 12*12\n*NOTE* :\n- Untuk Perkalian Menggunakan *\n- Untuk Pertambahan Menggunakan +\n- Untuk Pengurangan Mennggunakan -\n- Untuk Pembagian Menggunakan /`)
+				} else {
+			        reply(`* MATH *\n\n*Kalkulator*\n${mtk} = ${Math_js.evaluate(mtk)}`)
+			        }
+			        break
+
+
+                                
+					
+					
+				
+					
+				
+                                     
                 case 'bplogo':
               	               if (args.length < 1) return reply('teksnya mana kak?')
                                         teks = `${body.slice(8)}`
@@ -1111,12 +1136,13 @@ client.on('group-participants-update', async (anu) => {
                                         client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
 			     	        break
                 case 'blood':
-              	               if (args.length < 1) return reply('teksnya mana kak?')
-                                        teks = `${body.slice(10)}`
-                                        if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 5 kalimat', text, {quoted: mek})
-				        aruga = await getBuffer(`https://arugaz.my.id/api/textpro/bloodtext?text=${aruga}`)
-                                        client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
-			     	        break
+              	               if (args.length < 1) return reply(ind.wrongf())
+				aruga = body.slice(7)
+				reply(ind.wait())
+				aruga = await getBuffer(`https://arugaz.my.id/api/textpro/bloodtext?text=${aruga}`)
+				client.sendMessage(from, aruga, image, {caption: 'Nih kak', quoted: mek})
+				break
+			     	       
                 case 'cloudsky':
               	               if (args.length < 1) return reply('teksnya mana kak?')
                                         teks = `${body.slice(11)}`
@@ -1147,7 +1173,50 @@ client.on('group-participants-update', async (anu) => {
 					}
 					client.sendMessage(from, teks, text, {quoted: mek, detectLinks: false})
 					})
-                                        break 
+                                        break
+              case 'slap':
+					kapankah = body.slice(1)
+					if (isLimit(sender)) return reply(ind.limitend(pusname))
+					const slap =['anjing','babi lu','anak anjing','udah tolol nub Lagi','muka lo kek monyet','udah jomblo sendirian lagi dirumah tolol','so so an mau punya pacar muka aja kek monyet lepass dari kandang','ganteng doang di toxic aja dibilang baperan','pantek kau','bangsat kau','ku entod kalian nangis kau','anjing lu semua','lihat anak anjing lagi baca','ganteng doang jemput cewe dipanggang','kamu cantik beb bullshit anjing cowo buaya','anak setan','puki lu','anjing ngajak gelud','sama hantu takut cupu bangsat','cupu cupu aja gausah bacot','bangsat lu semua','bocah lu semua bangsat','3 Hari Lagi']
+					const ple = slap[Math.floor(Math.random() * slap.length)]
+					pod = await getBuffer(`https://media.giphy.com/media/S8507sBJm1598XnsgD/source.gif`)
+					client.sendMessage(from, pod, image, { quoted: mek, caption: '*Toxic*\n\n'+ ple })
+					await
+                                        break
+		case 'tampar':
+					
+					ranp = getRandom('.gif')
+					rano = getRandom('.webp')
+					buffer = await getBuffer('https://media.giphy.com/media/S8507sBJm1598XnsgD/source.gif', {method: 'get'})
+					exec(`wget ${buffer.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+						fs.unlinkSync(ranp)
+						if (err) return reply(ind.stikga())
+						buffer = fs.readFileSync(rano)
+						client.sendMessage(from, buffer, sticker, {quoted: mek})
+						fs.unlinkSync(rano)
+					})
+					break
+                case 'beritahoax':
+					
+					client.updatePresence(from, Presence.composing) 
+					data = await fetchJson(`https://docs-jojo.herokuapp.com/api/infohoax`, {method: 'get'})
+					teks = '=================\n'
+					for (let i of data.result) {
+						teks += `*Gambar* : ${i.image}\n*Title* : ${i.title}\n*link* : ${i.link}\n*tag* : ${i.tag}\n=================\n`
+					}
+					reply(teks.trim())
+				        break 
+                case 'quran':
+                                        anu = await fetchJson(`https://api.banghasan.com/quran/format/json/acak`, {method: 'get'})
+					quran = `${anu.acak.ar.teks}\n\n${anu.acak.id.teks}\nQ.S ${anu.surat.nama} ayat ${anu.acak.id.ayat}`
+					client.sendMessage(from, quran, text, {quoted: mek})
+					break   
+                              
+               	case 'jadwalsholat':
+				        anu = await fetchJson(`https://tobz-api.herokuapp.com/api/jadwalshalat?q=${body.slice(14)}&apikey=BotWeA`, {method: 'get'})
+					sholat = `Ashar : ${anu.result.ashar}\nDzuhur : ${anu.result.dzuhur}\nMagrib : ${anu.result.maghrib}\nIsha : ${anu.result.isha}\nSubuh : ${anu.result.subuh}`
+					client.sendMessage(from, sholat, text, {quoted: mek})
+					break
                 case 'matrix':
               	               if (args.length < 1) return reply('teksnya mana kak?')
                                         teks = `${body.slice(8)}`
@@ -1247,7 +1316,7 @@ client.on('group-participants-update', async (anu) => {
 							.addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
 							.toFormat('webp')
 							.save(ran)
-					} else {
+			                                } else {
 						reply(`Kirim gambar dengan caption ${prefix}sticker atau reply/tag gambar`)
 					}
 					break
@@ -1350,7 +1419,6 @@ client.on('group-participants-update', async (anu) => {
                                         break
 				case 'tagall':
 					if (!isGroup) return reply(mess.only.group)
-					if (!isPutra) return reply(mess.only.ownerB)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					members_id = []
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
@@ -1358,7 +1426,7 @@ client.on('group-participants-update', async (anu) => {
 					for (let mem of groupMembers) {
 						teks += `*>* @${mem.jid.split('@')[0]}\n`
 						members_id.push(mem.jid)
-					}
+                                                }
 					mentions(teks, members_id, true)
 					break
 				case 'tagme':
@@ -1651,8 +1719,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'listadmin':
 					if (!isGroup) return reply(mess.only.group)
                                         if (!isGroupAdmins) return reply(ind.admin())
-					if (!isOwner) return reply(mess.only.PutraNumber)
-					teks = `List admin of group *${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
+				        teks = `List admin of group *${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
 					no = 0
 					for (let admon of groupAdmins) {
 						no += 1
@@ -1721,7 +1788,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'welcome':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isOwner) return reply(mess.only.PutraNumber)
 					if (args.length < 1) return reply('Aktifkan dulu iya kak!')
 					if (Number(args[0]) === 1) {
 						if (isWelkom) return reply('*SUDAH AKTIF !!!*')
