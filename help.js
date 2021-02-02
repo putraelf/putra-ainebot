@@ -1,27 +1,5 @@
-const fs = require('fs-extra')
-const { 
-    prefix
-} = JSON.parse(fs.readFileSync('./settings/setting.json'))
-
-/*
-Dimohon untuk tidak menghapus link github saya, butuh support dari kalian! makasih.
-*/
-
-exports.textTnC = () => {
-    return `
-Source code / bot ini merupakan program open-source (gratis) yang ditulis menggunakan Javascript, kamu dapat menggunakan, menyalin, memodifikasi, menggabungkan, menerbitkan, mendistribusikan, mensublisensikan, dan atau menjual salinan dengan tanpa menghapus author utama dari source code / bot ini.
-`
-}
-
-/*
-Dimohon untuk tidak menghapus link github saya, butuh support dari kalian! makasih.
-*/
-
-exports.textMenu = (pushname) => {
-    return `
-_Hi/Halo/Hai, *${pushname}!*_
-Berikut adalah beberapa fitur yang ada pada bot ini!✨\n Semoga dengan adanya *PutraBot* ini kalian semua bisa terbantu.\n_Kebahagiaan orang lain lebih berharga dari pada kebahagiaan diri sendiri._
-*<<<=======================>>>*   	
+const help = (prefix) => { 
+	return `   
 ┏━━❉ *About Bot* ❉━━┓
 ┣⊱ *${prefix}owner*
 ┣⊱ *${prefix}donasi*
